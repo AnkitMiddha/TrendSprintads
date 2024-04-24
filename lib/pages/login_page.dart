@@ -38,17 +38,19 @@ class _LoginPageState extends State<LoginPage> {
        await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text, 
         password: passwordController.text,);
-         Navigator.pop(context);
+       
    }
+     
   on FirebaseAuthException catch (e) {
     Navigator.pop(context);
   if (e.code == 'wrong-password') {
-    print('wrong password');
+  
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content:   Text('Password did not match')));
 
   } else if (e.code == 'user-not-found') {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content:   Text('Email is already in use')));
   }
+  Navigator.pop(context);
 } 
   }
 
@@ -183,6 +185,7 @@ class _LoginPageState extends State<LoginPage> {
             
                 // sign in button
                 MyButton(
+                  color: Colors.black,
                   onTap:() {
                     _formKey.currentState!.validate();
                     signUserIn(context);}, text: 'Sign In',

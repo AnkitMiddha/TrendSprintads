@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CustomCard extends StatelessWidget {
-  const CustomCard({super.key, required this.image, required this.headline, required this.content});
+class customCard extends StatelessWidget {
+  const customCard({super.key, required this.image, required this.headline, required this.content});
   final String image ;
   final String headline;
   final String content;

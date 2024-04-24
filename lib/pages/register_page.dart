@@ -55,7 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
   on FirebaseAuthException catch (e) {
       Navigator.pop(context);
   if (e.code == 'weak-password') {
-    print('The password provided is too weak.');
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Password is too weak')));
   } else if (e.code == 'email-already-in-use') {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Email- already in use')));
     

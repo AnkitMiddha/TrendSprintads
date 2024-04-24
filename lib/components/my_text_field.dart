@@ -5,6 +5,7 @@ class MyTextField extends StatelessWidget {
   final String hintText;
   final bool obscureText;
    final FormFieldValidator<String>? validator;
+  
 
  const MyTextField({
     super.key,
