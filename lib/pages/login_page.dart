@@ -4,7 +4,7 @@ import 'package:loginpage/components/my_button.dart';
 import 'package:loginpage/components/my_text_field.dart';
 import 'package:loginpage/components/square_tile.dart';
 import 'package:loginpage/googleauth/google_auth.dart';
-import 'package:loginpage/pages/facebook_auth.dart';
+import 'package:loginpage/otpauth/phone_auth.dart';
 import 'package:loginpage/pages/forgot_password.dart';
 
 class LoginPage extends StatefulWidget {
@@ -243,9 +243,9 @@ class _LoginPageState extends State<LoginPage> {
 
                     // apple button
                     SquareTile(
-                      imagePath: 'assets/images/facebook.png',
+                      imagePath: 'assets/images/otp2.png',
                       onTap: () {
-                        signInWithFacebook();
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const PhoneAuth()));
                       },
                     ),
                   ],

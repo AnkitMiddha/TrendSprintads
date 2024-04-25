@@ -50,7 +50,13 @@ class _OurServicesState extends State<OurServices> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text("TrendSprint", style: GoogleFonts.lato(fontSize:22,color: Colors.white,fontWeight: FontWeight.bold)),
+        title:  Row(
+          children: [ 
+            Image.asset('assets/images/ts.jpg',height: 50,),
+            const SizedBox(width: 15,),
+            Text("TrendSprint", style: GoogleFonts.lato(fontSize:22,color: Colors.white,fontWeight: FontWeight.bold)),
+          ],
+        ),
         backgroundColor: const Color.fromARGB(255,42, 55, 83),
         actions: [
           IconButton(
@@ -72,11 +78,11 @@ class _OurServicesState extends State<OurServices> {
               const Heading(title:'Digital Marketing Services'  ),
               const Heading(title: 'for Trendsprint ads'),
            // _buildSectionTitle('Digital Marketing Services for Trendsprint ads'),
+              customCard(image: 'assets/images/soft.png', headline: 'Software Solutions', content: content[6]),
               customCard(image: 'assets/images/os1.png', headline: 'Social Media Management', content: content[0] ),
               customCard(image: 'assets/images/brand.png', headline: 'Branding and Identity', content: content[1]),
               customCard(image:'assets/images/influs.png' , headline: 'Influencer Marketing', content: content[2]),
               customCard(image: 'assets/images/email2.png', headline: 'Email Automation', content: content[3]),
-             // customCard(image: 'assets/images/os2.png', headline: ' Conversion Rate Optimization', content: content[4]),
               customCard(image: 'assets/images/vsn.png', headline: 'Marketing Analytics', content: content[5])
             ],
           ),
@@ -92,4 +98,5 @@ List<String> content = [
   "Our social media marketing agency help you automate your email campaigns, increasing your efficiency and effectiveness in reaching your target audience. Our online advertising team will also help you segment your audience and create targeted campaigns that drive engagement and conversions.",
   "Our conversion rate optimization services are designed to help businesses improve their business/website performance and increase conversions. We use data-driven insights to identify areas for improvement and create effective CRO strategies that deliver results",
 "Our social marketing analytics services are designed to help businesses measure and analyze their marketing performance. We use advanced analytics tools to track and report on key metrics, identify areas for improvement, and optimize your marketing strategies.",
+"At TrendSprint, we specialize in turning your ideas into polished apps and stunning websites. Whether you're looking to reach users on their devices or engage them on the web, our expert team is here to help. Explore our services today and let's bring your vision to life"
 ];

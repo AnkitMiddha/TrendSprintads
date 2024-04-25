@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:loginpage/pages/facebook_auth.dart';
+import 'package:loginpage/otpauth/phone_auth.dart';
 import 'package:loginpage/components/my_button.dart';
 import 'package:loginpage/components/my_text_field.dart';
 import 'package:loginpage/components/square_tile.dart';
@@ -230,11 +230,11 @@ class _RegisterPageState extends State<RegisterPage> {
   }),
             
                     const SizedBox(width: 20),
-            
-                    // apple button
                     SquareTile(
-                      imagePath: 'assets/images/facebook.png',
-                      onTap: () {signInWithFacebook();},
+                      imagePath: 'assets/images/otp2.png',
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const PhoneAuth()));
+                      },
                     ),
                   ],
                 ),

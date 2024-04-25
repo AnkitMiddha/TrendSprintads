@@ -15,8 +15,7 @@ void main() async {
    theme: ThemeData.light(),
     debugShowCheckedModeBanner: false,
     
-    home:
-    const SplashScreen(),
+    home: const SplashScreen(),
   )
   );
 }

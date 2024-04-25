@@ -8,14 +8,17 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  AnimatedSplashScreen(splash: Column(
-      children: [ Center(
-        child: LottieBuilder.asset('assets/lottie/Animation.json',),
+    return  Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: AnimatedSplashScreen(splash: Column(
+        children: [ Center(
+          child: LottieBuilder.asset('assets/lottie/Animation.json',),
+          
+        )],
         
-      )],
-      
-    ), nextScreen: const AuthPage(),splashIconSize:400 ,duration: 2000,backgroundColor: const Color.fromARGB(255, 42, 55, 83),
-  );
+      ), nextScreen: const AuthPage(),splashIconSize:500 ,duration: 4500,backgroundColor: const Color.fromARGB(255, 42, 55, 83),
+        ),
+    );
     
   }
 }
