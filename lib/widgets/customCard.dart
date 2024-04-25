@@ -25,7 +25,7 @@ class customCard extends StatelessWidget {
               const SizedBox(height: 15),
                Text(
                 headline,
-                style: GoogleFonts.lato(fontSize: 26, color: Colors.white, fontWeight:FontWeight.w900 ),
+                style: GoogleFonts.lato(fontSize: 22, color: Colors.white, fontWeight:FontWeight.w900 ),
                // TextStyle(),
               ),
               const SizedBox(height: 10),

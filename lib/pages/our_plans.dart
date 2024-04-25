@@ -166,26 +166,30 @@ class OurPlans extends StatelessWidget {
 
 
 
-                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Refer to our',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    const SizedBox(width: 4),
-                    GestureDetector(
-                      onTap: (){ Navigator.of(context).push(MaterialPageRoute(builder: (_)=> const PrivacyPolicy()));}, 
-                      child: const Text(
-                        'Privacy Policy',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
+                 Padding(
+                   padding: const EdgeInsets.all(8.0),
+                   child: Row(
+                    
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'Refer to our',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(width: 4),
+                      GestureDetector(
+                        onTap: (){ Navigator.of(context).push(MaterialPageRoute(builder: (_)=> const PrivacyPolicy()));}, 
+                        child: const Text(
+                          'Privacy Policy',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                )
+                    ],
+                                   ),
+                 )
                 
               ],
             ),

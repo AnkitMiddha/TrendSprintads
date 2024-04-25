@@ -7,9 +7,39 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:loginpage/components/heading.dart';
 import 'package:loginpage/widgets/customCard.dart';
 
-class OurServices extends StatelessWidget {
+class OurServices extends StatefulWidget {
   const OurServices({super.key});
 
+  @override
+  State<OurServices> createState() => _OurServicesState();
+}
+
+class _OurServicesState extends State<OurServices> {
+   late Image image1;
+  late Image image2;
+  late Image image3;
+  late Image image4;
+  late Image image5;
+  @override
+  void initState() {
+    image1 = Image.asset("assets/images/os1.png");
+    image2 = Image.asset("assets/images/brand.png");
+    image3 = Image.asset("assets/images/influs.png'");
+    image4 = Image.asset("assets/images/email2.png");
+    image5 = Image.asset("assets/images/vsn.png");
+
+    super.initState();
+  }
+    @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    precacheImage(image1.image, context);
+    precacheImage(image2.image, context);
+    precacheImage(image3.image, context);
+    precacheImage(image4.image, context);
+    precacheImage(image5.image, context);
+  }
   void signUserOut() {
     GoogleSignIn().signOut();
     FacebookAuth.instance.logOut();
@@ -45,7 +75,7 @@ class OurServices extends StatelessWidget {
               customCard(image: 'assets/images/os1.png', headline: 'Social Media Management', content: content[0] ),
               customCard(image: 'assets/images/brand.png', headline: 'Branding and Identity', content: content[1]),
               customCard(image:'assets/images/influs.png' , headline: 'Influencer Marketing', content: content[2]),
-              customCard(image: 'assets/images/email.png', headline: 'Email Automation', content: content[3]),
+              customCard(image: 'assets/images/email2.png', headline: 'Email Automation', content: content[3]),
              // customCard(image: 'assets/images/os2.png', headline: ' Conversion Rate Optimization', content: content[4]),
               customCard(image: 'assets/images/vsn.png', headline: 'Marketing Analytics', content: content[5])
             ],
@@ -54,7 +84,6 @@ class OurServices extends StatelessWidget {
       ),
     );
   }
-
 }
 List<String> content = [
   "Our social media management services are designed to help businesses increase brand awareness, generate more leads, and improve customer engagement. We create and share high-quality content that resonates with your target audience and help you build a strong social media presence.",

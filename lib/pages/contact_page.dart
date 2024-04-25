@@ -15,6 +15,18 @@ class ContactPage extends StatefulWidget {
 }
 
 class _ContactPageState extends State<ContactPage> {
+    late Image image1;
+    @override
+  void initState() {
+  image1 = Image.asset('assets/images/cu.png');
+    super.initState();
+  }
+    @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    precacheImage(image1.image, context);
+  }
   void signUserOut() {
     GoogleSignIn().signOut();
     FacebookAuth.instance.logOut();
@@ -36,6 +48,7 @@ class _ContactPageState extends State<ContactPage> {
           'email': _emailController.text,
           'message': _messageController.text,
         });
+      
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Message sent!')),
         );

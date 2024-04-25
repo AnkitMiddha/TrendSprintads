@@ -18,6 +18,31 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late Image image1;
+  late Image image2;
+  late Image image3;
+  late Image image4;
+  late Image image5;
+  @override
+  void initState() {
+      image1 = Image.asset("assets/images/smm.png");
+    image2 = Image.asset("assets/images/home.png");
+    image3 = Image.asset("assets/images/team1.png");
+    image4 = Image.asset("assets/images/socialmedia.png");
+        image5 = Image.asset("assets/images/t1.png");
+
+    super.initState();
+  }
+    @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    precacheImage(image1.image, context);
+    precacheImage(image2.image, context);
+    precacheImage(image3.image, context);
+    precacheImage(image4.image, context);
+    precacheImage(image5.image, context);
+  }
   void signUserOut() {
     GoogleSignIn().signOut();
     FacebookAuth.instance.logOut();

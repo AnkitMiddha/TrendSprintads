@@ -31,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
        if (!_formKey.currentState!.validate()) {
       return; // If validation fails, do not attempt login
     }
-       // showDialog(context:context , builder: (context)=>const Center(child: CircularProgressIndicator(),));
+   showDialog(context:context , builder: (context)=>const Center(child: CircularProgressIndicator(),));
 
    try {  
     if (passwordController.text==confirmPasswordController.text)
@@ -39,18 +39,18 @@ class _RegisterPageState extends State<RegisterPage> {
        await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text, 
         password: passwordController.text,);
-        if(!context.mounted)
-        {
-          return;
-        }
-          Navigator.pop(context);
+        
     }
     else {
            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Password did not match")));
       
      // showErrorMessage(context, "Password does not match!");
     }
-     
+     if(!context.mounted)
+        {
+          return;
+        }
+          Navigator.pop(context);
    }
   on FirebaseAuthException catch (e) {
       Navigator.pop(context);
@@ -182,6 +182,7 @@ class _RegisterPageState extends State<RegisterPage> {
             
                 // sign in button
                 MyButton(
+                  color: Colors.black,
                   onTap: () {  _formKey.currentState!.validate();
 
                   signUserUp(context);}, text: 'Sign Up',
