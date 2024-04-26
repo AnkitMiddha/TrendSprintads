@@ -16,7 +16,7 @@ class SplashScreen extends StatelessWidget {
           
         )],
         
-      ), nextScreen: const AuthPage(),splashIconSize:500 ,duration: 4500,backgroundColor: const Color.fromARGB(255, 42, 55, 83),
+      ), nextScreen: const AuthPage(),splashIconSize:500 ,duration: 4600,backgroundColor: const Color.fromARGB(255, 42, 55, 83),
         ),
     );
     

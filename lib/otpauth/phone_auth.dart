@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:loginpage/otpauth/otp_screen.dart';
 
-
 class PhoneAuth extends StatefulWidget {
   const PhoneAuth({super.key});
   static String verify = "";
@@ -14,7 +13,8 @@ class PhoneAuth extends StatefulWidget {
 class _PhoneAuthState extends State<PhoneAuth> {
   final TextEditingController _countryController = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
- // final TextEditingController _otpController = TextEditingController();
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // final TextEditingController _otpController = TextEditingController();
 
   var phone = '';
 
@@ -27,7 +27,7 @@ class _PhoneAuthState extends State<PhoneAuth> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.grey[300],
         title: const Text(
@@ -87,16 +87,28 @@ class _PhoneAuthState extends State<PhoneAuth> {
                       width: 10,
                     ),
                     Expanded(
-                        child: TextField(
-                      onChanged: (value) {
+                        child: Form(
+                      key: _formKey,
+                      child: TextFormField(
+                        validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your Mobile Number';
+                  }
+                  if (value.length <10 ) {
+                    return 'Please enter a 10 digit Mobile Number';
+                  }
+                        },
+                    onChanged: (value) {
                         phone = value;
                       },
-                      keyboardType: TextInputType.phone,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Phone",
+                        keyboardType: TextInputType.phone,
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Phone",
+                        ),
                       ),
-                    ))
+                        ),
+                    )
                   ],
                 ),
               ),
@@ -107,29 +119,28 @@ class _PhoneAuthState extends State<PhoneAuth> {
                 height: 60,
                 width: double.infinity,
                 child: ElevatedButton(
-                  
                   onPressed: () async {
+                     _formKey.currentState!.validate();
                     await FirebaseAuth.instance.verifyPhoneNumber(
                       phoneNumber: _countryController.text + phone,
                       verificationCompleted:
-                          (PhoneAuthCredential credential)async {
-                             await FirebaseAuth.instance.signInWithCredential(credential);
-                            // _otpController.setText(credential.smsCode.toString());
-                          },
-                          
+                          (PhoneAuthCredential credential) async {
+                        await FirebaseAuth.instance.signInWithCredential(credential);
+                        // _otpController.setText(credential.smsCode.toString());
+                      },
                       verificationFailed: (FirebaseAuthException e) {},
                       codeSent: (String verificationId, int? resendToken) {
                         PhoneAuth.verify = verificationId;
                         if (!context.mounted) {
                           return;
                         }
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const OtpScreen()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const OtpScreen()));
                       },
                       codeAutoRetrievalTimeout: (String verificationId) {},
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                  
                       backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),

@@ -231,7 +231,7 @@ class _RegisterPageState extends State<RegisterPage> {
             
                     const SizedBox(width: 20),
                     SquareTile(
-                      imagePath: 'assets/images/otp2.png',
+                      imagePath: 'assets/images/pin.png',
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const PhoneAuth()));
                       },

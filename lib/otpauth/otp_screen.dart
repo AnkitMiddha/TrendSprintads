@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import 'package:loginpage/otpauth/phone_auth.dart';
 import 'package:loginpage/pages/auth_page.dart';
 import 'package:pinput/pinput.dart';
@@ -13,49 +12,54 @@ class OtpScreen extends StatefulWidget {
   State<OtpScreen> createState() => _OtpScreenState();
 }
 
- class _OtpScreenState extends State<OtpScreen> {
+class _OtpScreenState extends State<OtpScreen> {
   final Telephony telephony = Telephony.instance;
- final TextEditingController _otpController = TextEditingController();
-  String textRecevied = '';
-  void onSubmit( BuildContext context) async {
-       try {
-                      PhoneAuthCredential credential =
-                          PhoneAuthProvider.credential(
-                              verificationId: PhoneAuth.verify, smsCode: _otpController.text);
+  final TextEditingController _otpController = TextEditingController();
+  // String textRecevied = '';
+  void onSubmit(BuildContext context) async {
+    try {
+      PhoneAuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: PhoneAuth.verify, smsCode: _otpController.text);
 
-                      // Sign the user in (or link) with the credential
-                      await auth.signInWithCredential(credential);
-                      if (!context.mounted) {
-                        return;
-                      }
-                     Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const AuthPage()), (route) => false);
-                    } catch (e) {
-                     // Get.snackbar('wrong otp',e.toString());
-                       print("wrong otp");
-                    }
-  }
-  
-  void startListening () {
-    telephony.listenIncomingSms(
-		onNewMessage: (SmsMessage message) {
-      if(message.body!.contains('loginpage-9c51e')){
-        String otpCode = message.body!.substring(0,6);
-        setState(() {
-			  _otpController.text = otpCode;
-        Future.delayed(const Duration(seconds: 1),() {
-     onSubmit(context);
-        });
-			});
+      // Sign the user in (or link) with the credential
+      await auth.signInWithCredential(credential);
+      if (!context.mounted) {
+        return;
       }
-		},
-		listenInBackground: false,
-	);
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => const AuthPage()),
+          (route) => false);
+    } catch (e) {
+      // Get.snackbar('wrong otp',e.toString());
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Wrong OTP')));
+    }
   }
+
+  void startListening() {
+    telephony.listenIncomingSms(
+      onNewMessage: (SmsMessage message) {
+        if (message.body!.contains('loginpage-9c51e')) {
+          String otpCode = message.body!.substring(0, 6);
+          setState(() {
+            _otpController.text = otpCode;
+            Future.delayed(const Duration(seconds: 1), () {
+              onSubmit(context);
+            });
+          });
+        }
+      },
+      listenInBackground: false,
+    );
+  }
+
   @override
   void initState() {
-   startListening();
+    startListening();
     super.initState();
   }
+
   final FirebaseAuth auth = FirebaseAuth.instance;
   final defaultPinTheme = PinTheme(
     width: 56,
@@ -82,13 +86,13 @@ class OtpScreen extends StatefulWidget {
   );
 
   @override
-  Widget build(BuildContext context)  {
-  // var code = "";
-   startListening();
+  Widget build(BuildContext context) {
+    // var code = "";
+    startListening();
     return Scaffold(
-       backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
-         backgroundColor: Colors.grey[300],
+        backgroundColor: Colors.grey[300],
         title: const Text(
           "Login Page",
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -112,7 +116,7 @@ class OtpScreen extends StatefulWidget {
                 height: 25,
               ),
               const Text(
-                'Phone Verfication',
+                'Phone Verification',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -120,15 +124,12 @@ class OtpScreen extends StatefulWidget {
                 height: 25,
               ),
               Pinput(
-                 controller: _otpController,
-                // onChanged: (value) {
-                
-                // setState(() {
-                //   code = value;
-                // }); 
-                
-                // },
-             
+                controller: _otpController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Please enter the OTP";
+                  }
+                },
                 length: 6,
                 defaultPinTheme: defaultPinTheme,
                 focusedPinTheme: focusedPinTheme,
@@ -137,29 +138,11 @@ class OtpScreen extends StatefulWidget {
               const SizedBox(
                 height: 25,
               ),
-              
               SizedBox(
                 height: 60,
                 width: double.infinity,
                 child: ElevatedButton(
-                 onPressed: () => onSubmit(context),
-                  //() async {
-                  //   try {
-                  //     PhoneAuthCredential credential =
-                  //         PhoneAuthProvider.credential(
-                  //             verificationId: PhoneAuth.verify, smsCode: _otpController.text);
-
-                  //     // Sign the user in (or link) with the credential
-                  //     await auth.signInWithCredential(credential);
-                  //     if (!context.mounted) {
-                  //       return;
-                  //     }
-                  //    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>const AuthPage()), (route) => false);
-                  //   } catch (e) {
-                  //    // Get.snackbar('wrong otp',e.toString());
-                  //      print("wrong otp");
-                  //   }
-                  // },
+                  onPressed: () => onSubmit(context),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
                       shape: RoundedRectangleBorder(
@@ -175,8 +158,8 @@ class OtpScreen extends StatefulWidget {
               ),
               TextButton(
                   onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, 'phone', (route) => true);
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const PhoneAuth()));
                   },
                   child: const Text('Edit Phone Number?'))
             ],
@@ -186,4 +169,3 @@ class OtpScreen extends StatefulWidget {
     );
   }
 }
-

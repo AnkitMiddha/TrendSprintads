@@ -20,6 +20,7 @@ class _OurServicesState extends State<OurServices> {
   late Image image3;
   late Image image4;
   late Image image5;
+  late Image image6;
   @override
   void initState() {
     image1 = Image.asset("assets/images/os1.png");
@@ -27,6 +28,7 @@ class _OurServicesState extends State<OurServices> {
     image3 = Image.asset("assets/images/influs.png'");
     image4 = Image.asset("assets/images/email2.png");
     image5 = Image.asset("assets/images/vsn.png");
+    image6 = Image.asset('assets/images/soft.png');
 
     super.initState();
   }
@@ -39,6 +41,7 @@ class _OurServicesState extends State<OurServices> {
     precacheImage(image3.image, context);
     precacheImage(image4.image, context);
     precacheImage(image5.image, context);
+      precacheImage(image6.image, context);
   }
   void signUserOut() {
     GoogleSignIn().signOut();
@@ -52,7 +55,7 @@ class _OurServicesState extends State<OurServices> {
       appBar: AppBar(
         title:  Row(
           children: [ 
-            Image.asset('assets/images/ts.jpg',height: 50,),
+          //  Image.asset('assets/images/ts.jpg',height: 50,),
             const SizedBox(width: 15,),
             Text("TrendSprint", style: GoogleFonts.lato(fontSize:22,color: Colors.white,fontWeight: FontWeight.bold)),
           ],

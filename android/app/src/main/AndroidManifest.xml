@@ -8,7 +8,7 @@ package="com.example.loginpage">
 
 
     <application
-        android:label="loginpage"
+        android:label="TrendSprint"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

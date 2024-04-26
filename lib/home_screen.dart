@@ -5,7 +5,10 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:loginpage/components/heading.dart';
+import 'package:loginpage/pages/about_us.dart';
 import 'package:loginpage/widgets/customCard.dart';
+import 'package:loginpage/widgets/custom_plans_card.dart';
+import 'package:loginpage/widgets/extras_card.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -76,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 20),
               const Heading(title:'About TrendSprint Ads' ),
              // buildSectionTitle('About TrendSprint Ads'),
+                CustomPlansCard(headline:'About TrendSprint', subheading: subheading, route: const AboutUs()),
                 customCard(image: 'assets/images/smm.png', headline: 'Why Advertisement?', content: content[3]),
                customCard(image: 'assets/images/home.png', headline: 'Our Vision', content: content[0]),
               customCard(image: 'assets/images/team1.png', headline: 'Our Team', content: content[1]),
@@ -98,3 +102,4 @@ List<String> content =[
 ,'We offer variety of social media advertising and campaigning services, including social media management, advertising, content creation, lead generation and many more. Our services are designed to help businesses increase their online presence and reach their target audience.',
 'Advertisements play a crucial role in business by raising awareness about products or services, influencing consumer behavior, and ultimately driving sales. They help companies reach their target audience, differentiate themselves from competitors, and build brand loyalty. Additionally, advertisements can inform consumers about new products, promotions, or special offers, creating demand and generating revenue forbusinesses.'
 ];
+String subheading = "Introducing TrendSprint, the powerhouse behind your online success. Are you a business owner yearning to stand out from the crowd? A startup dreaming of making a splash in the digital realm? Look no further! At TrendSprint, we're here to make your dreams a reality.";

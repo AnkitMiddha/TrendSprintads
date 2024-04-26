@@ -243,7 +243,7 @@ class _LoginPageState extends State<LoginPage> {
 
                     // apple button
                     SquareTile(
-                      imagePath: 'assets/images/otp2.png',
+                      imagePath: 'assets/images/pin.png',
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>const PhoneAuth()));
                       },
