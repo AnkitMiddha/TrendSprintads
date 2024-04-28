@@ -106,7 +106,6 @@ class _RegisterPageState extends State<RegisterPage> {
             
                 const SizedBox(height: 30),
             
-                // welcome back, you've been missed!
                 Text(
                   'Let\'s Create an Account for you!' ,
                   style: TextStyle(
@@ -133,6 +132,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   if (!RegExp(emailPattern).hasMatch(value)) {
                     return 'Please enter a valid email address';
                   }
+                  return null;
                 //  return null;
                 },
                   controller: emailController,
@@ -152,6 +152,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   if (value.length < 8) {
                     return 'Password must be at least 8 characters long';
                   }
+                  return null;
                  // return null;
                 },
                   controller: passwordController,
@@ -167,6 +168,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   if (value.length < 8) {
                     return 'Password must be at least 8 characters long';
                   }
+                  return null;
               //    return null;
                 },
                   controller: confirmPasswordController,

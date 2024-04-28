@@ -129,6 +129,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   if (value == null || value.isEmpty) {
                     return "Please enter the OTP";
                   }
+                  return null;
                 },
                 length: 6,
                 defaultPinTheme: defaultPinTheme,

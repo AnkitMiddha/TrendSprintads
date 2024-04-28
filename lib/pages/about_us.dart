@@ -19,7 +19,7 @@ class AboutUs extends StatelessWidget {
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
-        title: Text("TrendSprint",
+        title: Text("TrendSprint Ads",
             style: GoogleFonts.lato(
                 fontSize: 22,
                 color: Colors.white,
@@ -35,7 +35,7 @@ class AboutUs extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
 
           child: Column(
             children: [

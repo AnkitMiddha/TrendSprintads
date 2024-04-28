@@ -20,7 +20,7 @@ class Extras extends StatelessWidget {
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
-        title: Text("TrendSprint",
+        title: Text("TrendSprint Ads",
             style: GoogleFonts.lato(
                 fontSize: 22,
                 color: Colors.white,
@@ -42,11 +42,11 @@ class Extras extends StatelessWidget {
         child:SingleChildScrollView(
           child: Column(
             children: [
-              Text("Extras",style: GoogleFonts.lato(fontSize: 22,color: Colors.yellow,fontWeight: FontWeight.bold),),
+              Text("Special",style: GoogleFonts.lato(fontSize: 22,color: Colors.yellow,fontWeight: FontWeight.bold),),
               const SizedBox(height: 10,),
                 ExtrasCard(headline: "Basic Campaign Combo", content: content[0], costs:'₹100000'),
                 ExtrasCard(headline: "Smart Campaign Combo", content: content[1], costs:'₹350000'),
-                ExtrasCard(headline: "Campaign Ad Pro", content: content[2], costs:'₹100000'),
+                ExtrasCard(headline: "Campaign Ad Pro", content: content[2], costs:'₹500000'),
           
           
                 

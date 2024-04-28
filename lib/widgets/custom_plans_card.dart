@@ -48,7 +48,6 @@ class CustomPlansCard extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                 // minimumSize: const Size(340, 60),
                   side: const BorderSide(
                     width: 1.0,
                     color: Colors.yellow,

@@ -57,7 +57,7 @@ class _OurServicesState extends State<OurServices> {
           children: [ 
           //  Image.asset('assets/images/ts.jpg',height: 50,),
             const SizedBox(width: 15,),
-            Text("TrendSprint", style: GoogleFonts.lato(fontSize:22,color: Colors.white,fontWeight: FontWeight.bold)),
+            Text("TrendSprint Ads", style: GoogleFonts.lato(fontSize:22,color: Colors.white,fontWeight: FontWeight.bold)),
           ],
         ),
         backgroundColor: const Color.fromARGB(255,42, 55, 83),

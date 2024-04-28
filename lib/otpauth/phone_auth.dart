@@ -94,9 +94,10 @@ final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
                   if (value == null || value.isEmpty) {
                     return 'Please enter your Mobile Number';
                   }
-                  if (value.length <10 ) {
+                  if (value.length !=10 ) {
                     return 'Please enter a 10 digit Mobile Number';
                   }
+                  return null;
                         },
                     onChanged: (value) {
                         phone = value;
@@ -145,7 +146,7 @@ final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10))),
                   child: const Text(
-                    "Send the code",
+                    "Send OTP",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

@@ -7,23 +7,30 @@ import 'package:loginpage/pages/ourplans/extras.dart';
 import 'package:loginpage/pages/ourplans/mix.dart';
 import 'package:loginpage/pages/ourplans/separate.dart';
 import 'package:loginpage/pages/privacy_policy.dart';
+import 'package:loginpage/pages/upi_page.dart';
 import 'package:loginpage/widgets/custom_plans_card.dart';
 
-class OurPlans extends StatelessWidget {
+class OurPlans extends StatefulWidget {
   const OurPlans({super.key});
+
+  @override
+  State<OurPlans> createState() => _OurPlansState();
+}
+
+class _OurPlansState extends State<OurPlans> {
   void signUserOut() {
     GoogleSignIn().signOut();
     FacebookAuth.instance.logOut();
     FirebaseAuth.instance.signOut();
   }
-  
 
+  // static Future<bool> init(
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       backgroundColor: const Color.fromARGB(255, 42, 55, 83),
+      backgroundColor: const Color.fromARGB(255, 42, 55, 83),
       appBar: AppBar(
-        title: Text("TrendSprint",
+        title: Text("TrendSprint Ads",
             style: GoogleFonts.lato(
                 fontSize: 22,
                 color: Colors.white,
@@ -38,182 +45,106 @@ class OurPlans extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-         
-          child: Container(
-             padding: const EdgeInsets.only(top: 15),
-            decoration: const BoxDecoration
-            ( color:  Color.fromARGB(255, 42, 55, 83),
-            ),
-            child:  Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                 Text("Our Campaigns",style: GoogleFonts.lato(color: Colors.yellow,fontSize:26,fontWeight: FontWeight.w900),),
-                 const SizedBox(height: 15,),
-              CustomPlansCard(headline:"Mix" ,  subheading: subheading[0], route: const Mix(),),
-                 const SizedBox(height: 15,),
-              CustomPlansCard(headline:"Separate" , subheading: subheading[1], route: const Separate(), ),
-              CustomPlansCard(headline: "Extras", subheading: subheading[2], route: const Extras()),
+        child: Container(
+          padding: const EdgeInsets.only(top: 15),
+          decoration: const BoxDecoration(
+            color: Color.fromARGB(255, 42, 55, 83),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Our Campaigns",
+                style: GoogleFonts.lato(
+                    color: Colors.yellow,
+                    fontSize: 26,
+                    fontWeight: FontWeight.w900),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+               OutlinedButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => const UpiPage()));
+                },
+                style: OutlinedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  side: const BorderSide(
+                    width: 1.0,
+                    color: Colors.yellow,
+                  ),
+                ),
+                child: Text(
+                  'Buy A Plan',
+                  style: GoogleFonts.lato(
+                    color: Colors.yellow,
+                  ),
+                ),
+              ),
+              const SizedBox(height:10),
+              CustomPlansCard(
+                headline: "Mix",
+                subheading: subheading[0],
+                route: const Mix(),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              CustomPlansCard(
+                headline: "Separate",
+                subheading: subheading[1],
+                route: const Separate(),
+              ),
+              CustomPlansCard(
+                  headline: "Special",
+                  subheading: subheading[2],
+                  route: const Extras()),
+              const SizedBox(
+                height: 12,
+              ),
              
-                //  Text("MIX",style: GoogleFonts.lato(fontSize: 22,color: Colors.yellow),),
-                //   Padding(
-                //     padding: const EdgeInsets.all(12.0),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Social Media Ads",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("Rates",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                //   ),
-                //      Padding(
-                //     padding: const EdgeInsets.only(left: 12,right: 12,bottom: 10),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Social Media Ads(10000)",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹5,500",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                                     
-                //   ),
-                //     Padding(
-                //     padding: const EdgeInsets.only(left: 12,right: 12,bottom: 10),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Social Media Ads(20000)",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹10,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                //     ),
-                //      Padding(
-                //     padding: const EdgeInsets.only(left: 12,right: 12,bottom: 10),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Social Media Ads(1Lac)",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹45,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                //     ),
-                //      Padding(
-                //     padding: const EdgeInsets.only(left: 12,right: 12,bottom: 10),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Social Media Ads(5 Lac)",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹2,00,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                //     ),
-                //      Padding(
-                //     padding: const EdgeInsets.only(left: 12,right: 12,bottom: 10),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Social Media Ads(10 Lac)",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹3,50,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                //     ),
-                //       Padding(
-                //     padding: const EdgeInsets.only(left: 12,right: 12,bottom: 10),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Social Media Ads(Unlimited)",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹5,00,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                //     ),
-                //      Text("SEPARATE",style: GoogleFonts.lato(fontSize: 22,color: Colors.yellow),),
-                //   Padding(
-                //     padding: const EdgeInsets.all(12.0),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Facebook Ads(100000)",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹50,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                //   ),
-                //      Padding(
-                //     padding: const EdgeInsets.only(left: 12,right: 12,bottom: 10),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Instagram Ads(10000)",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹50,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                                     
-                //   ),
-                //     Padding(
-                //     padding: const EdgeInsets.only(left: 12,right: 12,bottom: 10),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("WhatsApp Ads(20000)",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹50,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                //     ),
-                //      Padding(
-                //     padding: const EdgeInsets.only(left: 12,right: 12,bottom: 10),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("SMS Ads(20000)",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹20,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                //     ),
-                //      Text("EXTRAS",style: GoogleFonts.lato(fontSize: 22,color: Colors.yellow),),
-                //   Padding(
-                //     padding: const EdgeInsets.all(12.0),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Basic Campaign Combo Ads",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹1,00,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                //   ),
-                //      Padding(
-                //     padding: const EdgeInsets.only(left: 12,right: 12,bottom: 10),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Smart Campaign Combo",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹3,50,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                                     
-                //   ),
-                //     Padding(
-                //     padding: const EdgeInsets.only(left: 12,right: 12,bottom: 10),
-                //     child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //                      children: [
-                //     Text("Campaign Ad Pro",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),),
-                //     Text("₹5,00,000",style: GoogleFonts.lato(fontSize: 16,color: Colors.white),)
-                //                      ],),
-                //     ),
-
-
-
-
-                 Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Row(
-                    
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Refer to our',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      const SizedBox(width: 4),
-                      GestureDetector(
-                        onTap: (){ Navigator.of(context).push(MaterialPageRoute(builder: (_)=> const PrivacyPolicy()));}, 
-                        child: const Text(
-                          'Privacy Policy',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
-                          ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'Refer to our',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    const SizedBox(width: 4),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const PrivacyPolicy()));
+                      },
+                      child: const Text(
+                        'Privacy Policy',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                                   ),
-                 )
-                
-              ],
-            ),
+                    ),
+                  ],
+                ),
+              )
+            ],
           ),
         ),
-      
+      ),
     );
   }
 }
+
 List<String> subheading = [
-    "In this category we campaign at all platforms, providing comprehensive social media marketing solutions tailored to your business needs. it's type is given below",
-    "In this category we campaign at specific platform to create targeted marketing strategies that align with the unique features and user demographics of each social media network it's type is given below",
-    "it include campaigns designed for specific time and businesses  require careful planning and a deep understanding of industry trends, seasonal opportunities, and business objectives.",
-  ];
+  "In this category we campaign at all platforms, providing comprehensive social media marketing solutions tailored to your business needs. it's type is given below",
+  "In this category we campaign at specific platform to create targeted marketing strategies that align with the unique features and user demographics of each social media network it's type is given below",
+  "it include campaigns designed for specific time and businesses  require careful planning and a deep understanding of industry trends, seasonal opportunities, and business objectives.",
+];
 // List<String> content =[
 //  """SOCIAL MEDIA ADS with 10 thousand engagement Costs Rs 5500 
 

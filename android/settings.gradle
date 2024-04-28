@@ -12,7 +12,10 @@ pluginManagement {
 
     repositories {
         google()
-        mavenCentral()
+        mavenCentral(
+                       // url ("https://phonepe.mycloudrepo.io/public/repositories/phonepe-intentsdk-android")
+
+        )
         gradlePluginPortal()
     }
 }
